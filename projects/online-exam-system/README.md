@@ -1,26 +1,34 @@
 # Online Exam System
 
-An object-oriented Java implementation of exam management, question types, student submissions and grading.
+A Java object-oriented model for creating exams, registering students, recording answers, and generating scores and grade reports. It separates question behavior from the manager that stores exams and student submissions.
 
-## Technologies
-- Java
-- Standard JDK libraries
+## What it supports
 
-## Code
-- Main implementation: [`src/onlineTest/SystemManager.java`](src/onlineTest/SystemManager.java)
+- Create exams and add **true/false**, **multiple-choice**, and **fill-in-the-blank** questions.
+- Register students and record answers by exam and question.
+- Compute exam scores, grading reports, and per-exam minimum/maximum/average scores.
+- Calculate course-level numeric and letter grades using configurable cutoffs.
+- Save and restore manager state using Java object serialization.
 
-## Running locally
+## Code structure
 
-Compile with a JDK:
+- [`Manager.java`](src/onlineTest/Manager.java) — required management interface.
+- [`SystemManager.java`](src/onlineTest/SystemManager.java) — implementation of exam/student storage, grading, reports, and persistence.
+- [`Exam.java`](src/onlineTest/Exam.java), [`Student.java`](src/onlineTest/Student.java), and [`Submission.java`](src/onlineTest/Submission.java) — primary data models.
+- [`Question.java`](src/onlineTest/Question.java) and the question subclasses — question types and grading behavior.
+
+## Compile
+
+This is a project library rather than a packaged UI or web service. From this project directory, with a JDK:
 
 ```bash
 javac -d out $(find src -name '*.java')
 ```
 
-This is a project library rather than a packaged standalone application.
+Explore `SystemManager.java` to see how the methods in the `Manager` interface are implemented.
 
-**Status:** Some previously saved expected outputs did not match; not presented as fully validated.
+**Technical focus:** interfaces, inheritance, polymorphism, collections, serialization, and modular object design.
 
-## Project background
+**Validation note:** Some previously saved outputs did not match reference results. The project is shared to demonstrate the design and implementation, **not** as a fully validated grading application.
 
-Developed as part of University of Maryland programming coursework. Some scaffolding or interfaces were provided with the assignment; this repository preserves the project structure for review.
+> University of Maryland Java coursework. The assignment interfaces and some starter structure originated from the course.
