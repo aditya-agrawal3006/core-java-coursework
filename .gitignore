@@ -1,0 +1,20 @@
+# Build outputs
+*.class
+out/
+bin/
+build/
+target/
+
+# Editor and OS files
+.classpath
+.project
+.settings/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local course submission files and archives
+.submit
+.submitUser
+*.zip
